@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vigar.dao.ArticleDataMapper" >
+  <resultMap id="BaseResultMap" type="com.vigar.model.ArticleData" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="copyfrom" property="copyfrom" jdbcType="VARCHAR" />
+    <result column="relation" property="relation" jdbcType="VARCHAR" />
+    <result column="allow_comment" property="allowComment" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.vigar.model.ArticleData" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, copyfrom, relation, allow_comment
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cms_article_data
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cms_article_data
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.vigar.model.ArticleData" >
+    insert into cms_article_data (id, copyfrom, relation, 
+      allow_comment, content)
+    values (#{id,jdbcType=VARCHAR}, #{copyfrom,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}, 
+      #{allowComment,jdbcType=CHAR}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vigar.model.ArticleData" >
+    insert into cms_article_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="copyfrom != null" >
+        copyfrom,
+      </if>
+      <if test="relation != null" >
+        relation,
+      </if>
+      <if test="allowComment != null" >
+        allow_comment,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="copyfrom != null" >
+        #{copyfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="allowComment != null" >
+        #{allowComment,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vigar.model.ArticleData" >
+    update cms_article_data
+    <set >
+      <if test="copyfrom != null" >
+        copyfrom = #{copyfrom,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        relation = #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="allowComment != null" >
+        allow_comment = #{allowComment,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.vigar.model.ArticleData" >
+    update cms_article_data
+    set copyfrom = #{copyfrom,jdbcType=VARCHAR},
+      relation = #{relation,jdbcType=VARCHAR},
+      allow_comment = #{allowComment,jdbcType=CHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vigar.model.ArticleData" >
+    update cms_article_data
+    set copyfrom = #{copyfrom,jdbcType=VARCHAR},
+      relation = #{relation,jdbcType=VARCHAR},
+      allow_comment = #{allowComment,jdbcType=CHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
