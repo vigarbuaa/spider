@@ -15,7 +15,7 @@ import com.vigar.method.Spider;
  */
 public class ZhiHuMain {
 
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		
 		//定义你要抓取页面的url，格式参照下文
 		//当前url对应方法一
@@ -45,7 +45,7 @@ public class ZhiHuMain {
 		 * 下载地址在Spider.downloadCommend中修改
 		 * url:"https://www.zhihu.com/explore/recommendations"
 		 */
-		String url = "https://www.zhihu.com/explore/recommendations";
-		Spider.downloadCommend(url);
-	}
+//		String url = "https://www.zhihu.com/explore/recommendations";
+//		Spider.downloadCommend(url);
+//	}*/
 }

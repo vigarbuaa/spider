@@ -11,9 +11,9 @@
               <!-- 配置数据库连接信息 -->
               <dataSource type="POOLED">
                   <property name="driver" value="com.mysql.jdbc.Driver" />
-                 <property name="url" value="jdbc:mysql://localhost:3306/jeesite?useUnicode=true&amp;characterEncoding=utf-8" />
-                 <property name="username" value="root" />
-                 <property name="password" value="" />
+                 <property name="url" value="jdbc:mysql://rds2o4afjt5ed2kdrai4o.mysql.rds.aliyuncs.com:3306/jeesite?useUnicode=true&amp;characterEncoding=utf-8" />
+                 <property name="username" value="jeesite" />
+                 <property name="password" value="AB12345678c" />
              </dataSource>
          </environment>
      </environments>
@@ -24,6 +24,5 @@
         <!--   <mapper resource="hello/User2Mapper.xml"/>-->
          <mapper resource="com/vigar/dao/ArticleMapper.xml"/>
          <mapper resource="com/vigar/mapping/ArticleDataMapper.xml"/>
-     </mappers>
-     
+     </mappers>     
 </configuration>

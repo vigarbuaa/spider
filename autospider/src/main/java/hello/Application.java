@@ -22,15 +22,22 @@ import com.vigar.model.ArticleData;
 @SpringBootApplication
 //@EnableScheduling
 public class Application  implements CommandLineRunner  {
-
+	private static String url = "";
+	
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class);
-        System.out.println("hahah");
+        if(args.length!=1){
+        	 System.out.println("参数是对应网url");
+        	 System.exit(0);
+        }
+       
+    	url = args[0];
+        
     }
     
 	@Override
 	public void run(String... strings) throws Exception {
-		String url = "https://www.zhihu.com/question/39980813";
+//		String url = "https://www.zhihu.com/question/39980813";
 		String picPath = Spider.downloadPic(url);
 		String articleContent = Util.getAllImageHtml(picPath);
 		System.out.println("articleContent: " + articleContent);
